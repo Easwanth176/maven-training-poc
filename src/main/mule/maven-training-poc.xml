@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0c82c120-469e-43c5-80a7-5fd616ef86d0" basePath="maven" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<flow name="maven-training-poc-main-flow" doc:id="0aabd24f-6e63-411e-87c0-88541a84481a" >
+		<http:listener doc:name="Listener" doc:id="f8221eb9-80ac-454b-b6bd-9e3a96bbcfa1" config-ref="HTTP_Listener_config" path="test"/>
+		<logger level="INFO" doc:name="Start" doc:id="b8ed6953-a4e1-410b-89ac-de0e2034ef64" message="#[flow.name]"/>
+
+		
+		<logger level="INFO" doc:name="End" doc:id="5a15dbef-af25-477d-b6ac-f34656655fab" message="#[flow.name]"/>
+	</flow>
+</mule>
